@@ -6,7 +6,7 @@
  * Copyright 2014-2015, Adrian Soluch - http://soluch.us/
  * Released under the MIT License
  * ============================================================ */
-var NodeBittrexApi = function() {
+var NodeCryptopia = function() {
 
     'use strict';
 
@@ -20,13 +20,13 @@ var NodeBittrexApi = function() {
             method: 'GET',
             agent: false,
             headers: {
-                "User-Agent": "Mozilla/4.0 (compatible; Node Bittrex API)",
+                "User-Agent": "Mozilla/4.0 (compatible; SIGBOT Cryptopia API)",
                 "Content-type": "application/x-www-form-urlencoded"
             }
         };
 
     var opts = {
-        baseUrl: 'https://bittrex.com/api/v1.1',
+        baseUrl: 'https://www.cryptopia.co.nz/api/',
         apikey: 'APIKEY',
         apisecret: 'APISECRET',
         verbose: false,
@@ -135,97 +135,51 @@ var NodeBittrexApi = function() {
             }
             sendRequestCallback(callback, op);
         },
+
+// Starts Cryptopia
         getmarkets: function(callback) {
             var op = request_options;
-            op.uri = opts.baseUrl + '/public/getmarkets';
+            op.uri = opts.baseUrl + 'GetMarkets';
             sendRequestCallback(callback, op);
         },
         getcurrencies: function(callback) {
             var op = request_options;
-            op.uri = opts.baseUrl + '/public/getcurrencies';
+            op.uri = opts.baseUrl + 'GetCurrencies';
             sendRequestCallback(callback, op);
         },
-        getticker: function(options, callback) {
-            var op = setRequestUriGetParams(opts.baseUrl + '/public/getticker', options);
-            sendRequestCallback(callback, op);
-        },
-        getmarketsummaries: function(callback) {
+        gettradepairs: function(callback) {
             var op = request_options;
-            op.uri = opts.baseUrl + '/public/getmarketsummaries';
+            op.uri = opts.baseUrl + 'GetTradePairs';
             sendRequestCallback(callback, op);
         },
-        getmarketsummary: function(options, callback) {
-            var op = setRequestUriGetParams(opts.baseUrl + '/public/getmarketsummary', options);
-            sendRequestCallback(callback, op);
-        },
-        getorderbook: function(options, callback) {
-            var op = setRequestUriGetParams(opts.baseUrl + '/public/getorderbook', options);
+        getmarket: function(options, callback) {
+            var op = request_options;
+            op.uri = opts.baseUrl + 'GetMarket/' + options;
             sendRequestCallback(callback, op);
         },
         getmarkethistory: function(options, callback) {
-            var op = setRequestUriGetParams(opts.baseUrl + '/public/getmarkethistory', options);
+            var op = request_options;
+            op.uri = opts.baseUrl + 'GetMarketHistory/' + options;
             sendRequestCallback(callback, op);
         },
-        buylimit: function(options, callback) {
-            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + '/market/buylimit'), options);
+        getmarketorders: function(options, callback) {
+            var op = request_options;
+            op.uri = opts.baseUrl + 'GetMarketOrders/' + options;
             sendRequestCallback(callback, op);
         },
 
-        buymarket: function(options, callback) {
-            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + '/market/buymarket'), options);
-            sendRequestCallback(callback, op);
-        },
-        selllimit: function(options, callback) {
-            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + '/market/selllimit'), options);
-            sendRequestCallback(callback, op);
-        },
-        sellmarket: function(options, callback) {
-            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + '/market/sellmarket'), options);
-            sendRequestCallback(callback, op);
-        },
-        cancel: function(options, callback) {
-            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + '/market/cancel'), options);
-            sendRequestCallback(callback, op);
-        },
-        getopenorders: function(options, callback) {
-            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + '/market/getopenorders'), options);
-            sendRequestCallback(callback, op);
-        },
+// Starts Private API - unfinished
+
         getbalances: function(callback) {
-            var op = apiCredentials(opts.baseUrl + '/account/getbalances');
+            var op = apiCredentials(opts.baseUrl + 'GetBalance/');
             sendRequestCallback(callback, op);
         },
         getbalance: function(options, callback) {
-            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + '/account/getbalance'), options);
+            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + 'GetBalance/'), options);
             sendRequestCallback(callback, op);
         },
-        getwithdrawalhistory: function(options, callback) {
-            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + '/account/getwithdrawalhistory'), options);
-            sendRequestCallback(callback, op);
-        },
-        getdepositaddress: function(options, callback) {
-            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + '/account/getdepositaddress'), options);
-            sendRequestCallback(callback, op);
-        },
-        getdeposithistory: function(options, callback) {
-            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + '/account/getdeposithistory'), options);
-            sendRequestCallback(callback, op);
-        },
-        getorderhistory: function(options, callback) {
-            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + '/account/getorderhistory'), options);
-            sendRequestCallback(callback, op);
-        },
-        getorder: function(options, callback) {
-            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + '/account/getorder'), options);
-            sendRequestCallback(callback, op);
-        },
-        withdraw: function(options, callback) {
-            var op = setRequestUriGetParams(apiCredentials(opts.baseUrl + '/account/withdraw'), options);
-            sendRequestCallback(callback, op);
-        }
 
+// End of calls
     };
 
 }();
-
-module.exports = NodeBittrexApi;
