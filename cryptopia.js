@@ -1,6 +1,6 @@
 /* ============================================================
- * node.bittrex.api
- * https://github.com/n0mad01/node.bittrex.api
+ * node-cryptopia
+ * https://github.com/Pariolainen/node-cryptopia
  *
  * ============================================================
  * Copyright 2014-2015, Adrian Soluch - http://soluch.us/
