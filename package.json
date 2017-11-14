@@ -1,13 +1,13 @@
 {
-  "name": "node.bittrex.api",
+  "name": "node-cryptopia",
   "version": "0.2.2",
-  "description": "Node Bittrex API - asynchronous node.js library for the Bittrex API https://bittrex.com/",
+  "description": "Node Cryptopia API - asynchronous node.js library for the Cryptopia API",
   "keywords": [
     "btc",
     "xbt",
     "bitcoin",
     "altcoin",
-    "bittrex"
+    "cryptopia"
   ],
   "author": "Adrian Soluch ( https://github.com/n0mad01 )",
   "contributors": [],
@@ -19,9 +19,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/n0mad01/node.bittrex.api"
+    "url": "https://github.com/Partiolainen/node-cryptopia"
   },
-  "main": "node.bittrex.api.js",
+  "main": "node-cryptopia.js",
   "engines": {
     "node": ">=0.10"
   },
